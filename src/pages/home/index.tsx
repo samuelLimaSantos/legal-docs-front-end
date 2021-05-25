@@ -11,16 +11,6 @@ type Address = {
   number?: number;
 }
 
-type Request = {
-  name: string;
-  nationality: string;
-  maritalStatus: string;
-  identity: string;
-  cpf: string;
-  numberOfProcess: string;
-  address: Address;
-}
-
 const Home = () => {
 
   const [ cep, setCep ] = useState("");
@@ -31,7 +21,6 @@ const Home = () => {
   const [ identity, setIdentity ] = useState("");
   const [ cpf, setCpf ] = useState("");
   const [ numberOfProcess, setNumberOfProcess ] = useState("");
-  const [ isAddressFill, setIsAddressFill ] = useState(false);
 
   const getAddressByCep = useCallback(async () => {
     try {
@@ -44,10 +33,8 @@ const Home = () => {
         state: data.uf,
         street: data.logradouro
       });
-      setIsAddressFill(true);
     } catch (error) {
       alert('Informe um CEP válido');
-      setIsAddressFill(false);
     }
   }, [cep]);
 
